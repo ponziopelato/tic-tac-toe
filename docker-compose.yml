@@ -1,0 +1,29 @@
+services:
+  php:
+    image: "brumbrum/php-develop:7.4-develop-brumbrum"
+    links:
+      - redis
+    volumes:
+      - .:/data:z
+      - ~/.aws:/var/www/.aws:z
+      - ~/.ssh:/.ssh:z
+    environment:
+      - APP=test
+      - ENVIRONMENT_NAME=development
+      - REDIS_HOST=redis
+    dns:
+      - 10.0.0.2
+      - 8.8.8.8
+  nginx:
+    image: "brumbrum/nginx"
+    environment:
+      - FRAMEWORK=slim
+      - SKIP_SSM_PARAMETERS=true
+    links:
+      - php
+    ports:
+      - "80:80"
+    volumes:
+      - .:/data:z
+  redis:
+    image: 'redis:alpine'

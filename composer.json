@@ -1,0 +1,17 @@
+{
+    "name": "test/tictactoe",
+    "description": "Simple Tic Tac toe game",
+    "license": "BSD-3-Clause",
+    "type": "project",
+    "keywords": ["slim-framework"],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.0",
+        "monolog/monolog": "^1.13",
+        "ext-redis": "*"
+    }
+}
