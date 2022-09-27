@@ -7,11 +7,17 @@ class TicTacToeModel
 {
     public static function playGame ($board, $move, $player)
     {
-        foreach ($move as $value) {
+        foreach ($move as $key => $value) {
             $count = 0;
 
             for ($i = 0; $i < 3; $i++) {
-                if ($board[$value][$i] == $player) {
+            	if ($key == 0) {
+            	    $check = $board[$value][$i];
+		} else {
+            	    $check = $board[$i][$value];
+		}
+		
+                if ($check == $player) {
                     $count++;
                 }
             }
